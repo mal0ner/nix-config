@@ -1,0 +1,45 @@
+style="auto"
+inline_height = 25
+
+history_filter = [
+    "^ls$",
+    "^z ",
+    "^clear",
+]
+
+# hit enter to run hovered cmd, tab to edit
+enter_accept = true
+
+[stats]
+common_subcommands = [
+    "cargo",
+    "composer",
+    "docker",
+    "git",
+    "go",
+    "kubectl",
+    "nix",
+    "nmcli",
+    "npm",
+    "pnpm",
+    "podman",
+    "port",
+    "systemctl",
+    "tmux",
+]
+
+common_prefix = ["sudo"]
+
+ignored_commands = [
+    "cd",
+    "ls",
+]
+
+[keys]
+
+[sync]
+records = true
+
+[preview]
+
+[daemon]
