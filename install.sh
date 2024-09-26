@@ -27,4 +27,7 @@ else
     ln -sfn "$src/nixos" "$dst/nixos"
     ln -sfn "$src/pkgs" "$dst/pkgs"
 fi
-echo "generated soft links to $dst"
+echo "[nix] generated soft links to $dst\n"
+
+echo "[obsidian] generating notes folder..."
+mkdir -p $HOME/notes
