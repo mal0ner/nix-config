@@ -86,11 +86,20 @@
 
   programs.fish.enable = true;
 
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cama = {
     isNormalUser = true;
     description = "Cameron Malone";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = pkgs.fish;
     useDefaultShell = true;
   };
@@ -99,10 +108,10 @@
   nixpkgs.config.allowUnfree = true;
 
   # ADDED HYPRLAND ------------------
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -120,54 +129,22 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # nVidia open source (first party not noveau)
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true; # Modesetting is required.
+    powerManagement.enable = false; # Nvidia power management. Experimental
+    powerManagement.finegrained = false; # Turns off GPU when not in use.
+    open = false; # nVidia open source (first party not noveau) not stable so false
+    nvidiaSettings = true; # Enable the Nvidia settings menu,
+    package = config.boot.kernelPackages.nvidiaPackages.stable; # Optional, select the appropriate driver version for your GPU.
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  # xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   # END ADDED HYPRLAND ------------------
 
   environment.systemPackages = with pkgs; [
-    # hyprland
-    # pkgs.waybar
-    # pkgs.dunst
-    # libnotify
-    #
-    # swww # wallpapers
-    #
-    # fuzzel # launcher
     wl-clipboard-rs
-
-    # discord client for wayland
-    vesktop
+    vesktop # wayland discord
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
