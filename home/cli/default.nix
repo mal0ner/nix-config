@@ -4,22 +4,32 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # essential
     git
     tmux
 
+    # workflow
     starship
     zoxide
     yazi
-    fzf
-    fd
     bat
     eza
     btop
-    ripgrep
     rm-improved
     wget
     lazygit
     atuin
+
+    # search / text manipulation
+    fd
+    fzf
+    ripgrep
+    jq
+    yq
+    jqp
+
+    # tools
+    unzip
   ];
 
   home.sessionVariables = {
