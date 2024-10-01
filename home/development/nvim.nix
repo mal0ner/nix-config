@@ -3,19 +3,19 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      gopls # Go
-      sumneko-lua-language-server # Lua
-      rust-analyzer # Rust
-      clang-tools # C/C++
-      ruff-lsp # Python Lint
-      pyright # Python
+      # LSP
+      gopls
+      sumneko-lua-language-server
+      rust-analyzer
+      clang-tools
+      ruff-lsp
+      pyright
+      nil
 
-      nil # Nix LSP
-
-      # fmt
-      alejandra # Nix
-      stylua # Lua
-      gofumpt # Golang
+      # FORMAT
+      alejandra
+      stylua
+      gofumpt
     ];
   };
 }
