@@ -25,28 +25,32 @@
         ./hosts/desktop/configuration.nix
         home-manager.nixosModules.home-manager
         {
+          nixpkgs.overlays = [rust-overlay.overlays.default];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.cama = import ./hosts/desktop/home.nix;
+          home-manager.users.cama = {pkgs, ...}: {
+            imports = [./hosts/desktop/home.nix];
+            home.packages = [pkgs.rust-bin.stable.latest.default];
+          };
           home-manager.backupFileExtension = "backup";
         }
-        ({pkgs, ...}: {
-          nixpkgs.overlays = [rust-overlay.overlays.default];
-          environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-        })
       ];
       specialArgs = {inherit inputs;};
     };
 
-    homeConfigurations."cam@airbook" = nixpkgs.lib.homeManagerConfiguration {
-      pks = import nixpkgs {
+    homeConfigurations."cam@airbook" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
         system = "aarch64-darwin";
+        overlays = [rust-overlay.overlays.default];
         config = {
           allowUnfree = true;
         };
       };
       modules = [
         ./hosts/laptop-m1/home.nix
+        ({pkgs, ...}: {
+          home.packages = [pkgs.rust-bin.stable.latest.default];
+        })
       ];
     };
   };
