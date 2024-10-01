@@ -11,7 +11,11 @@
       pyright # Python
 
       nil # Nix LSP
-      alejandra # Nix Formatter
+
+      # fmt
+      alejandra # Nix
+      stylua # Lua
+      gofumpt # Golang
     ];
   };
 }
