@@ -10,6 +10,6 @@ in {
         "JetBrainsMono"
       ];
     })
-    pragmasevka
+    pragmasevka # local file
   ];
 }
