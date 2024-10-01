@@ -1,10 +1,7 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  pragmasevka = pkgs.callPackage ./pragmasevka {};
+in {
   fonts.fontconfig.enable = true;
-
-  imports = [
-    ../../pkgs
-  ];
-
   home.packages = with pkgs; [
     (nerdfonts.override {
       fonts = [
@@ -13,6 +10,6 @@
         "JetBrainsMono"
       ];
     })
-    pkgs.custom.pragmasevka
+    pragmasevka
   ];
 }
