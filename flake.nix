@@ -37,5 +37,17 @@
       ];
       specialArgs = {inherit inputs;};
     };
+
+    homeConfigurations."cam@airbook" = nixpkgs.lib.homeManagerConfiguration {
+      pks = import nixpkgs {
+        system = "aarch64-darwin";
+        config = {
+          allowUnfree = true;
+        };
+      };
+      modules = [
+        ./hosts/laptop-m1/home.nix
+      ];
+    };
   };
 }
