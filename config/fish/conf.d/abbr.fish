@@ -2,6 +2,9 @@
 abbr vim nvim
 abbr lg lazygit
 
+# git
+abbr gom "nvim (git status --short | awk '{print \$2}')"
+
 # place abbrs
 abbr dot "z dotfiles && nvim"
 
