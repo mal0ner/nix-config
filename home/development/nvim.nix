@@ -16,6 +16,10 @@
       alejandra
       stylua
       gofumpt
+
+      # TypeScript
+      nodejs
+      nodePackages.typescript-language-server
     ];
   };
 }
