@@ -3,7 +3,7 @@ abbr vim nvim
 abbr lg lazygit
 
 # git
-abbr gom "nvim (git status --short | awk '{print \$2}')"
+abbr gom "git status --short &>/dev/null && nvim (git status --short | awk '{print \$2}') || echo \"Not a git repository\""
 
 # place abbrs
 abbr dot "z dotfiles && nvim"
