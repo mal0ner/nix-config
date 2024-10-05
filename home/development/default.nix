@@ -14,6 +14,8 @@
 
     lua
 
+    node
+
     clang
   ];
 }
