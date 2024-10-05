@@ -20,6 +20,11 @@
       # TypeScript
       nodejs
       nodePackages.typescript-language-server
+
+      # PHP
+      intelephense
+      php83Packages.php-codesniffer
+      php83Packages.php-cs-fixer
     ];
   };
 }

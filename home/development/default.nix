@@ -14,8 +14,11 @@
 
     lua
 
-    node
+    nodejs
 
     clang
+
+    php
+    php83Packages.composer
   ];
 }
