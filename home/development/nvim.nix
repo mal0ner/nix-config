@@ -20,6 +20,7 @@
       # TypeScript
       nodejs
       nodePackages.typescript-language-server
+      prettierd
 
       # PHP
       intelephense
