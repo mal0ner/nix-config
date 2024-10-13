@@ -30,6 +30,7 @@
 
     # tools
     unzip
+    httpie
   ];
 
   home.sessionVariables = {
